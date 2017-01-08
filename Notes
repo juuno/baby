@@ -1,0 +1,61 @@
+NOTES
+
+(This file is not provided under the MIT license used for the rest of the files in this repository. It is
+instead intended to be research notes primarily for my personal use, but published in the form of a blog post
+for any interested readers who my stumble upon the software provided in this repository. As such, standard
+copyright applies to this file.)
+
+First, a definition. A 'true' A.I. (TAI) is one that roughly passes the Turing test, or one that at least has human
+or super-human-level performance for a given task, and performs that task in a human-like manner, i.e. its
+failure modes are statistically identical to a human's.
+
+One of the biggest problems in building a 'true' A.I. is that humans learn how to perform tasks in an extremely
+interconnected and self-referential way. I.e. multiple skills are trained simultaneously, and knowledge in one
+area intimately informs understanding of another. Furthermore, an adult human is the culmination of 20 years of
+such training.
+
+The models used in modern neural networks, and the training sets involved usually tend to be goal-oriented. By
+this I mean that these algorithms have biases introduced by the assumptions made by the developer about how a
+certain A.I. should behave.
+
+Two possible solutions for this issue are: (1) to create an algorithm that learns the way a human learns, i.e. the
+holy grail of A.I., or (2) design an algorithm that has as few biases as possible.
+
+Since option (1) is the collective goal of the entire research community I will focus on option (2) here. In a
+sense, following option (2) would be doing the same thing everyone has been doing for years - trying to be more
+clever in designing neural networks. However we will try to rebuild some of the standard building blocks to make
+the algorithm more flexible and human-like.
+
+
+OBJECT DETECTION, CLASSIFICATION, LABELING, AND DRAWING
+
+I will focus on computer imaging due to the many recent advances and the availability of a wide range of strong
+codebases.
+
+In terms of understanding visual information, even when constrained to a 2D pixelated image, a human has
+considerable advantages that a TAI would have overcome or incorporate:
+   * binocular vision allows us to automatically detect the boundaries of objects
+      - this in turn facilitates edge detection in non-stereo images due to years of training
+   * the training for object recognition is itself informed by correlations with inputs from all other senses
+   
+A TAI should then be structured to allow multiple ways of learning about objects. The layout of most neural
+networks means this may be accomplished by simply increasing the basis of models fed into the training process.
+Alternatively, it may be useful to rethink the structure of the training process.
+
+The fact that training sets for object detection usually include edges drawn by humans means they have a decent
+proxy for binocular vision. However a case may be made for using training images that are stereo.
+
+The lack of training sets for the sense of touch, sound, etc., let alone cross-correlated and labeled sets of
+objects recorded in all of these senses simultaneously, means we do not currently have the resources to train
+an ideal TAI. One possible method for tackling a simplified version of this problem is to train on videos and
+developing tools for correlating two different 'senses'. However, videos do not provided targeted training
+objects akin to what a human would experience when looking at and listening to something. A better method may
+be to use a robot that can see, hear and touch. However, this also has the limitation of being bottlenecked
+by the speed of the robot's mechanical functions.
+
+Another strategy would be to feed an additional parameter into training sets that mimics the information gained
+from touch, such as the weight of objects. I have yet to address the problem of differentiating this type of
+input from simply increasing the dimensionality of the data set.
+
+* I will update this after reading up on the details of the most successful algorithms currently available *
+
